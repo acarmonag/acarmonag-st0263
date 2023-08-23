@@ -12,7 +12,7 @@ RABBITMQ_IP = os.getenv('RABBITMQ_IP')
 USER_RABBITMQ = os.getenv('USER_RABBITMQ')
 PASSWORD_RABBITMQ = os.getenv('PASSWORD_RABBITMQ')
 
-connection = pika.BlockingConnection(pika.ConnectionParameters('RABBITMQ_IP', 5672, '/', pika.PlainCredentials('USER_RABBITMQ', 'PASSWORD_RABBITMQ')))
+connection = pika.BlockingConnection(pika.ConnectionParameters(RABBITMQ_IP, 5672, '/', pika.PlainCredentials(USER_RABBITMQ, PASSWORD_RABBITMQ)))
 channel = connection.channel()
 
 channel.basic_publish(exchange='my_exchange', routing_key='', body='Hello World!')
