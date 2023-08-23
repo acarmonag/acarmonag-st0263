@@ -1,6 +1,6 @@
-# info de la materia: STxxxx <nombre>
+# info de la materia: ST0263 <nombre>
 #
-# Estudiante(s): nombre, email-eafit
+# Estudiante(s): Antonio Carmona Gaviria, acarmonag@gmail.com
 #
 # Profesor: nombre, email-eafit
 #
