@@ -21,9 +21,6 @@ class ProductService(Service_pb2_grpc.ProductServiceServicer):
             ruta_archivo = os.path.join(RUTA_ARCHIVOS, archivo)
             fecha_modificacion = datetime.datetime.fromtimestamp(os.path.getmtime(ruta_archivo)).strftime('%Y-%m-%d %H:%M:%S')
             tamaño = os.path.getsize(ruta_archivo) / (1024*1024) # Tamaño en MB
-            print("Archivo encontrado: " + archivo)
-            print("Última modificación: " + fecha_modificacion)
-            print("Tamaño: " + str(tamaño) + " MB")
             archivo_respuesta.append(Service_pb2.singleTransactionResponse(nombre=archivo, last_updated=fecha_modificacion, size=tamaño))
             yield Service_pb2.multipleTransactionResponse(files=archivo_respuesta)
             
