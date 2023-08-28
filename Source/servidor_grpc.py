@@ -19,7 +19,7 @@ class ProductService(Service_pb2_grpc.ProductServiceServicer):
          if request.busqueda in archivo:
             ruta_archivo = os.path.join(RUTA_ARCHIVOS, archivo)
             fecha_modificacion = datetime.datetime.fromtimestamp(os.path.getmtime(ruta_archivo)).strftime('%Y-%m-%d %H:%M:%S')
-            tamaño = round(float(os.path.getsize(ruta_archivo) / (1024 * 1024)), 5)  # Tamaño en MB
+            tamaño = str(os.path.getsize(ruta_archivo) / (1024*1024))  # Tamaño en MB
             print("Archivo encontrado: " + archivo)
             print("Última modificación: " + fecha_modificacion)
             print("Tamaño: " + str(tamaño) + " MB")

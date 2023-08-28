@@ -18,8 +18,8 @@ class singleTransactionResponse(_message.Message):
     SIZE_FIELD_NUMBER: _ClassVar[int]
     nombre: str
     last_updated: str
-    size: float
-    def __init__(self, nombre: _Optional[str] = ..., last_updated: _Optional[str] = ..., size: _Optional[float] = ...) -> None: ...
+    size: str
+    def __init__(self, nombre: _Optional[str] = ..., last_updated: _Optional[str] = ..., size: _Optional[str] = ...) -> None: ...
 
 class multipleTransactionResponse(_message.Message):
     __slots__ = ["files"]
