@@ -3,6 +3,7 @@ import Source.Service_pb2 as Service_pb2
 import Source.Service_pb2_grpc as Service_pb2_grpc
 from config import* 
 
+
 class RecursosGRPC:
     def __init__(self, host= GRPC_HOST ):
         # Crear un canal de comunicación con el servidor gRPC
