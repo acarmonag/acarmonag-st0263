@@ -10,7 +10,7 @@ message Archive {
 message singleTransactionResponse {
     string nombre = 1;
     string last_updated = 2;
-    double size = 3;
+    float size = 3;
 }
 
 message multipleTransactionResponse {

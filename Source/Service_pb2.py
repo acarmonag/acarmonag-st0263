@@ -13,7 +13,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rService.proto\"\x1b\n\x07\x41rchive\x12\x10\n\x08\x62usqueda\x18\x01 \x01(\t\"O\n\x19singleTransactionResponse\x12\x0e\n\x06nombre\x18\x01 \x01(\t\x12\x14\n\x0clast_updated\x18\x02 \x01(\t\x12\x0c\n\x04size\x18\x03 \x01(\x01\"H\n\x1bmultipleTransactionResponse\x12)\n\x05\x66iles\x18\x01 \x03(\x0b\x32\x1a.singleTransactionResponse\"\x07\n\x05\x45mpty2\x83\x01\n\x0eProductService\x12\x39\n\rSearchProduct\x12\x08.Archive\x1a\x1c.multipleTransactionResponse0\x01\x12\x36\n\x0cListProducts\x12\x06.Empty\x1a\x1c.multipleTransactionResponse0\x01\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rService.proto\"\x1b\n\x07\x41rchive\x12\x10\n\x08\x62usqueda\x18\x01 \x01(\t\"O\n\x19singleTransactionResponse\x12\x0e\n\x06nombre\x18\x01 \x01(\t\x12\x14\n\x0clast_updated\x18\x02 \x01(\t\x12\x0c\n\x04size\x18\x03 \x01(\x02\"H\n\x1bmultipleTransactionResponse\x12)\n\x05\x66iles\x18\x01 \x03(\x0b\x32\x1a.singleTransactionResponse\"\x07\n\x05\x45mpty2\x83\x01\n\x0eProductService\x12\x39\n\rSearchProduct\x12\x08.Archive\x1a\x1c.multipleTransactionResponse0\x01\x12\x36\n\x0cListProducts\x12\x06.Empty\x1a\x1c.multipleTransactionResponse0\x01\x62\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
