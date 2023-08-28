@@ -7,10 +7,9 @@ import os
 load_dotenv()
 
 GRPC_HOST= os.getenv('GRPC_HOST')
-GRPC_PORT= os.getenv('GRPC_PORT')
 
 class RecursosGRPC:
-    def __init__(self, host= GRPC_HOST, port= GRPC_PORT):
+    def __init__(self, host= GRPC_HOST):
         # Crear un canal de comunicación con el servidor gRPC
         self.canal = grpc.insecure_channel(host)
         # Crear un cliente para el servicio ProductService
