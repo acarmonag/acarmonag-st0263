@@ -1,11 +1,16 @@
 import grpc
 import Source.Service_pb2 as Service_pb2
 import Source.Service_pb2_grpc as Service_pb2_grpc
-from config import* 
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
+
+GRPC_HOST= os.getenv('GRPC_HOST')
+GRPC_PORT= os.getenv('GRPC_PORT')
 
 class RecursosGRPC:
-    def __init__(self, host= GRPC_HOST ):
+    def __init__(self, host= GRPC_HOST, port= GRPC_PORT):
         # Crear un canal de comunicación con el servidor gRPC
         self.canal = grpc.insecure_channel(host)
         # Crear un cliente para el servicio ProductService
