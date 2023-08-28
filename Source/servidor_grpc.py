@@ -20,7 +20,7 @@ class ProductService(Service_pb2_grpc.ProductServiceServicer):
       print("Solicitud recibida para listar productos")
       # Aquí se puede agregar la lógica para listar los productos
       # Por ahora, solo se devuelve un producto de ejemplo
-      yield Service_pb2.Archive(busqueda="nombre_del_archivo_ejemplo")
+      yield Service_pb2.multipleTransactionResponse(busqueda="nombre_del_archivo_ejemplo")
 
 def serve():
     # Crear el servidor gRPC
