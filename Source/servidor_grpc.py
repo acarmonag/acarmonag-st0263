@@ -16,6 +16,7 @@ class ProductService(Service_pb2_grpc.ProductServiceServicer):
       
       # Buscar el archivo en el directorio
       for archivo in os.listdir(RUTA_ARCHIVOS):
+         archivo_respuesta = []
          if request.busqueda in archivo:
             ruta_archivo = os.path.join(RUTA_ARCHIVOS, archivo)
             fecha_modificacion = datetime.datetime.fromtimestamp(os.path.getmtime(ruta_archivo)).strftime('%Y-%m-%d %H:%M:%S')
@@ -23,7 +24,9 @@ class ProductService(Service_pb2_grpc.ProductServiceServicer):
             print("Archivo encontrado: " + archivo)
             print("Última modificación: " + fecha_modificacion)
             print("Tamaño: " + str(tamaño) + " MB")
-            yield Service_pb2.singleTransactionResponse(nombre=archivo, last_updated=fecha_modificacion, size=tamaño)
+            archivo_respuesta.append(Service_pb2.singleTransactionResponse(nombre=archivo, last_updated=fecha_modificacion, size=tamaño))
+            yield Service_pb2.multipleTransactionResponse(files=archivo_respuesta)
+            
 
    # Implementación de la función ListProducts
    def ListProducts(self, request, context):
