@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request
 import recursos_grpc
+from config import*
 
 app = Flask(__name__)
 recursos = recursos_grpc.RecursosGRPC()
@@ -16,4 +17,5 @@ def listar_productos():
     return jsonify({"archivos": archivos})
 
 if __name__ == "__main__":
-    app.run(debug=True, host='0.0.0.0', port=80)
+    app.run(debug=True, host= HOST_APIGW, port = PORT_APIGW)
+    

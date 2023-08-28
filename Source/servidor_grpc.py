@@ -2,9 +2,10 @@ from concurrent import futures
 import grpc
 import Service_pb2
 import Service_pb2_grpc
+import os
+import datetime
+from config import*
 
-# Dirección y puerto donde el servidor estará escuchando
-HOST = '0.0.0.0:50051'
 
 # Implementación del servicio ProductService
 class ProductService(Service_pb2_grpc.ProductServiceServicer):
@@ -12,15 +13,27 @@ class ProductService(Service_pb2_grpc.ProductServiceServicer):
    # Implementación de la función SearchProduct
    def SearchProduct(self, request, context):
       print("Solicitud recibida para buscar producto: " + request.busqueda)
-      # Aquí se puede agregar la lógica para buscar el producto
-      return Service_pb2.singleTransactionResponse(nombre="nombre_del_archivo", last_updated="fecha", size=1.2)
+      
+      # Buscar el archivo en el directorio
+      for archivo in os.listdir(RUTA_ARCHIVOS):
+          if request.busqueda in archivo:
+              ruta_archivo = os.path.join(RUTA_ARCHIVOS, archivo)
+              fecha_modificacion = datetime.datetime.fromtimestamp(os.path.getmtime(ruta_archivo)).strftime('%Y-%m-%d %H:%M:%S')
+              tamaño = os.path.getsize(ruta_archivo) / (1024 * 1024)  # Tamaño en MB
+              yield Service_pb2.singleTransactionResponse(nombre=archivo, last_updated=fecha_modificacion, size=tamaño)
 
    # Implementación de la función ListProducts
    def ListProducts(self, request, context):
       print("Solicitud recibida para listar productos")
-      # Aquí se puede agregar la lógica para listar los productos
-      # Por ahora, solo se devuelve un producto de ejemplo
-      yield Service_pb2.multipleTransactionResponse(busqueda="nombre_del_archivo_ejemplo")
+      
+      archivos_respuesta = []
+      for archivo in os.listdir(RUTA_ARCHIVOS):
+          ruta_archivo = os.path.join(RUTA_ARCHIVOS, archivo)
+          fecha_modificacion = datetime.datetime.fromtimestamp(os.path.getmtime(ruta_archivo)).strftime('%Y-%m-%d %H:%M:%S')
+          tamaño = os.path.getsize(ruta_archivo) / (1024 * 1024)  # Tamaño en MB
+          archivos_respuesta.append(Service_pb2.singleTransactionResponse(nombre=archivo, last_updated=fecha_modificacion, size=tamaño))
+      
+      yield Service_pb2.multipleTransactionResponse(files=archivos_respuesta)
 
 def serve():
     # Crear el servidor gRPC
