@@ -16,11 +16,14 @@ class ProductService(Service_pb2_grpc.ProductServiceServicer):
       
       # Buscar el archivo en el directorio
       for archivo in os.listdir(RUTA_ARCHIVOS):
-          if request.busqueda in archivo:
-              ruta_archivo = os.path.join(RUTA_ARCHIVOS, archivo)
-              fecha_modificacion = datetime.datetime.fromtimestamp(os.path.getmtime(ruta_archivo)).strftime('%Y-%m-%d %H:%M:%S')
-              tamaño = os.path.getsize(ruta_archivo) / (1024 * 1024)  # Tamaño en MB
-              yield Service_pb2.singleTransactionResponse(nombre=archivo, last_updated=fecha_modificacion, size=tamaño)
+         if request.busqueda in archivo:
+            ruta_archivo = os.path.join(RUTA_ARCHIVOS, archivo)
+            fecha_modificacion = datetime.datetime.fromtimestamp(os.path.getmtime(ruta_archivo)).strftime('%Y-%m-%d %H:%M:%S')
+            tamaño = os.path.getsize(ruta_archivo) / (1024 * 1024)  # Tamaño en MB
+            print("Archivo encontrado: " + archivo)
+            print("Última modificación: " + fecha_modificacion)
+            print("Tamaño: " + str(tamaño) + " MB")
+            yield Service_pb2.singleTransactionResponse(nombre=archivo, last_updated=fecha_modificacion, size=tamaño)
 
    # Implementación de la función ListProducts
    def ListProducts(self, request, context):
@@ -28,10 +31,10 @@ class ProductService(Service_pb2_grpc.ProductServiceServicer):
       
       archivos_respuesta = []
       for archivo in os.listdir(RUTA_ARCHIVOS):
-          ruta_archivo = os.path.join(RUTA_ARCHIVOS, archivo)
-          fecha_modificacion = datetime.datetime.fromtimestamp(os.path.getmtime(ruta_archivo)).strftime('%Y-%m-%d %H:%M:%S')
-          tamaño = os.path.getsize(ruta_archivo) / (1024 * 1024)  # Tamaño en MB
-          archivos_respuesta.append(Service_pb2.singleTransactionResponse(nombre=archivo, last_updated=fecha_modificacion, size=tamaño))
+         ruta_archivo = os.path.join(RUTA_ARCHIVOS, archivo)
+         fecha_modificacion = datetime.datetime.fromtimestamp(os.path.getmtime(ruta_archivo)).strftime('%Y-%m-%d %H:%M:%S')
+         tamaño = os.path.getsize(ruta_archivo) / (1024 * 1024)  # Tamaño en MB
+         archivos_respuesta.append(Service_pb2.singleTransactionResponse(nombre=archivo, last_updated=fecha_modificacion, size=tamaño))
       
       yield Service_pb2.multipleTransactionResponse(files=archivos_respuesta)
 
