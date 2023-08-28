@@ -22,53 +22,35 @@ PASSWORD_RABBITMQ = os.getenv('PASSWORD_RABBITMQ')
 connection = pika.BlockingConnection(pika.ConnectionParameters(HOST_RABBITMQ, PORT_RABBITMQ, '/', pika.PlainCredentials(USER_RABBITMQ, PASSWORD_RABBITMQ)))
 channel = connection.channel()
 
-def list_files(ch, method, properties, body):
-    response = []
+def SearchProduct(ch, method, properties, body):
+    requestbusqueda = body.decode('utf-8')
+    print("Solicitud recibida para buscar producto: " + requestbusqueda)
+      
+    archivo_respuesta = []
+    for archivo in os.listdir(RUTA_ARCHIVOS):
+         archivo_respuesta = []
+         if requestbusqueda in archivo:
+            ruta_archivo = os.path.join(RUTA_ARCHIVOS, archivo)
+            fecha_modificacion = datetime.datetime.fromtimestamp(os.path.getmtime(ruta_archivo)).strftime('%Y-%m-%d %H:%M:%S')
+            tamaño = os.path.getsize(ruta_archivo) / (1024*1024) # Tamaño en MB
+            archivo_respuesta.append({"nombre":archivo, "last_updated":fecha_modificacion, "size":tamaño})
 
-    for file_name in os.listdir(dir):
-        file_info = {}
-        file_info["name"] = file_name
-        file_path = os.path.join(dir, file_name)
+    publish_response(ch, method, properties, archivo_respuesta)
 
-        if os.path.isfile(file_path):
-            size = os.path.getsize(file_path)
-            time = os.path.getmtime(file_path)
-            timestamp = datetime.datetime.fromtimestamp(time)
-            formatted_date = timestamp.strftime("%Y-%m-%d %H:%M:%S")
+def ListProducts(ch, method, properties, body):
+    print("Solicitud recibida para listar productos por rabbitmq")
+      
+    archivos_respuesta = []
+    for archivo in os.listdir(RUTA_ARCHIVOS):
+        ruta_archivo = os.path.join(RUTA_ARCHIVOS, archivo)
+        fecha_modificacion = datetime.datetime.fromtimestamp(os.path.getmtime(ruta_archivo)).strftime('%Y-%m-%d %H:%M:%S')
+        tamaño = os.path.getsize(ruta_archivo) / (1024 * 1024) # Tamaño en MB
+        archivos_respuesta.append({"nombre":archivo, "last_updated":fecha_modificacion, "size":tamaño})
 
-            file_info["size"] = size
-            file_info["timestamp"] = formatted_date
-
-            response.append(file_info)
-
-    print(f'The response in LIST is : {response}')
-    publish_response(ch, method, properties, response)
-
-def find_files(ch, method, properties, body):
-    response = []
-
-    search = body.decode('utf-8')
-    for filename in glob.glob(f"{dir}/{search}"):
-        file_info = {}
-        file_info["name"] = os.path.basename(filename)
-        size = os.path.getsize(filename)
-        time = os.path.getmtime(filename)
-        timestamp = datetime.datetime.fromtimestamp(time)
-        formatted_date = timestamp.strftime("%Y-%m-%d %H:%M:%S")
-    
-        file_info["size"] = size
-        file_info["timestamp"] = formatted_date
-
-        response.append(file_info)
-
-    print(f'The response in FIND is : {response}')
-    publish_response(ch, method, properties, response)
+    publish_response(ch, method, properties, archivos_respuesta)
 
 def publish_response(ch, method, properties, response):
-    print("properties:", properties)
-    print("Reply_to:", properties.reply_to)
-    print("Corr_id:", properties.correlation_id)
-
+    
     channel.basic_publish(
         exchange='',
         routing_key=properties.reply_to,
@@ -78,8 +60,8 @@ def publish_response(ch, method, properties, response):
         body=json.dumps(response)
     )
     ch.basic_ack(delivery_tag=method.delivery_tag)
-    print("Response sent to RabbitMQ!")
+    print("Respuesta de rabbitmq enviada")
     
-channel.basic_consume(queue="list_queue", on_message_callback=list_files, auto_ack=False)
-channel.basic_consume(queue="find_queue", on_message_callback=find_files, auto_ack=False)
+channel.basic_consume(queue="list_queue", on_message_callback=ListProducts, auto_ack=False)
+channel.basic_consume(queue="find_queue", on_message_callback=SearchProduct, auto_ack=False)
 channel.start_consuming()
