@@ -15,15 +15,15 @@ class ProductServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.SearchProduct = channel.unary_unary(
+        self.SearchProduct = channel.unary_stream(
                 '/ProductService/SearchProduct',
                 request_serializer=Service__pb2.Archive.SerializeToString,
-                response_deserializer=Service__pb2.TransactionResponse.FromString,
+                response_deserializer=Service__pb2.multipleTransactionResponse.FromString,
                 )
         self.ListProducts = channel.unary_stream(
                 '/ProductService/ListProducts',
                 request_serializer=Service__pb2.Empty.SerializeToString,
-                response_deserializer=Service__pb2.Archive.FromString,
+                response_deserializer=Service__pb2.multipleTransactionResponse.FromString,
                 )
 
 
@@ -46,15 +46,15 @@ class ProductServiceServicer(object):
 
 def add_ProductServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'SearchProduct': grpc.unary_unary_rpc_method_handler(
+            'SearchProduct': grpc.unary_stream_rpc_method_handler(
                     servicer.SearchProduct,
                     request_deserializer=Service__pb2.Archive.FromString,
-                    response_serializer=Service__pb2.TransactionResponse.SerializeToString,
+                    response_serializer=Service__pb2.multipleTransactionResponse.SerializeToString,
             ),
             'ListProducts': grpc.unary_stream_rpc_method_handler(
                     servicer.ListProducts,
                     request_deserializer=Service__pb2.Empty.FromString,
-                    response_serializer=Service__pb2.Archive.SerializeToString,
+                    response_serializer=Service__pb2.multipleTransactionResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -78,9 +78,9 @@ class ProductService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/ProductService/SearchProduct',
+        return grpc.experimental.unary_stream(request, target, '/ProductService/SearchProduct',
             Service__pb2.Archive.SerializeToString,
-            Service__pb2.TransactionResponse.FromString,
+            Service__pb2.multipleTransactionResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -97,6 +97,6 @@ class ProductService(object):
             metadata=None):
         return grpc.experimental.unary_stream(request, target, '/ProductService/ListProducts',
             Service__pb2.Empty.SerializeToString,
-            Service__pb2.Archive.FromString,
+            Service__pb2.multipleTransactionResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

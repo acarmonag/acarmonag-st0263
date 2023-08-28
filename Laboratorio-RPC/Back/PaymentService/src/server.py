@@ -2,8 +2,8 @@
 from concurrent import futures
 
 import grpc
-import Service_pb2
-import Service_pb2_grpc
+import Source.Service_pb2 as Service_pb2
+import Source.Service_pb2_grpc as Service_pb2_grpc
 
 HOST = '[::]:8080'
 

@@ -13,7 +13,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rService.proto\"\x1b\n\x07\x41rchive\x12\x10\n\x08\x62usqueda\x18\x01 \x01(\t\"\x15\n\x13TransactionResponse\"\x07\n\x05\x45mpty2e\n\x0eProductService\x12/\n\rSearchProduct\x12\x08.Archive\x1a\x14.TransactionResponse\x12\"\n\x0cListProducts\x12\x06.Empty\x1a\x08.Archive0\x01\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rService.proto\"\x1b\n\x07\x41rchive\x12\x10\n\x08\x62usqueda\x18\x01 \x01(\t\"O\n\x19singleTransactionResponse\x12\x0e\n\x06nombre\x18\x01 \x01(\t\x12\x14\n\x0clast_updated\x18\x02 \x01(\t\x12\x0c\n\x04size\x18\x03 \x01(\x01\"H\n\x1bmultipleTransactionResponse\x12)\n\x05\x66iles\x18\x01 \x03(\x0b\x32\x1a.singleTransactionResponse\"\x07\n\x05\x45mpty2\x83\x01\n\x0eProductService\x12\x39\n\rSearchProduct\x12\x08.Archive\x1a\x1c.multipleTransactionResponse0\x01\x12\x36\n\x0cListProducts\x12\x06.Empty\x1a\x1c.multipleTransactionResponse0\x01\x62\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -23,10 +23,12 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   DESCRIPTOR._options = None
   _globals['_ARCHIVE']._serialized_start=17
   _globals['_ARCHIVE']._serialized_end=44
-  _globals['_TRANSACTIONRESPONSE']._serialized_start=46
-  _globals['_TRANSACTIONRESPONSE']._serialized_end=67
-  _globals['_EMPTY']._serialized_start=69
-  _globals['_EMPTY']._serialized_end=76
-  _globals['_PRODUCTSERVICE']._serialized_start=78
-  _globals['_PRODUCTSERVICE']._serialized_end=179
+  _globals['_SINGLETRANSACTIONRESPONSE']._serialized_start=46
+  _globals['_SINGLETRANSACTIONRESPONSE']._serialized_end=125
+  _globals['_MULTIPLETRANSACTIONRESPONSE']._serialized_start=127
+  _globals['_MULTIPLETRANSACTIONRESPONSE']._serialized_end=199
+  _globals['_EMPTY']._serialized_start=201
+  _globals['_EMPTY']._serialized_end=208
+  _globals['_PRODUCTSERVICE']._serialized_start=211
+  _globals['_PRODUCTSERVICE']._serialized_end=342
 # @@protoc_insertion_point(module_scope)

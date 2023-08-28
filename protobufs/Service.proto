@@ -7,12 +7,20 @@ message Archive {
 }
 
 // Definición del mensaje TransactionResponse
-message TransactionResponse {}
+message singleTransactionResponse {
+    string nombre = 1;
+    string last_updated = 2;
+    double size = 3;
+}
+
+message multipleTransactionResponse {
+    repeated singleTransactionResponse files = 1;
+}
 
 // Definición del servicio ProductService
 service ProductService {
-    rpc SearchProduct(Archive) returns (TransactionResponse);
-    rpc ListProducts(Empty) returns (stream Archive);
+    rpc SearchProduct(Archive) returns (stream multipleTransactionResponse);
+    rpc ListProducts(Empty) returns (stream multipleTransactionResponse);
 }
 
 message Empty {}

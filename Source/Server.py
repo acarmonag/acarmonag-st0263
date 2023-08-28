@@ -4,7 +4,7 @@ import Service_pb2
 import Service_pb2_grpc
 
 # Dirección y puerto donde el servidor estará escuchando
-HOST = '[::]:8080'
+HOST = '[::]:50051'
 
 # Implementación del servicio ProductService
 class ProductService(Service_pb2_grpc.ProductServiceServicer):
@@ -13,7 +13,7 @@ class ProductService(Service_pb2_grpc.ProductServiceServicer):
    def SearchProduct(self, request, context):
       print("Solicitud recibida para buscar producto: " + request.busqueda)
       # Aquí se puede agregar la lógica para buscar el producto
-      return Service_pb2.TransactionResponse()
+      return Service_pb2.singleTransactionResponse(nombre="nombre_del_archivo", last_updated="fecha", size=1.2)
 
    # Implementación de la función ListProducts
    def ListProducts(self, request, context):
