@@ -4,7 +4,7 @@ import Service_pb2
 import Service_pb2_grpc
 
 # Dirección y puerto donde el servidor estará escuchando
-HOST = '[::]:50051'
+HOST = '0.0.0.0:50051'
 
 # Implementación del servicio ProductService
 class ProductService(Service_pb2_grpc.ProductServiceServicer):
