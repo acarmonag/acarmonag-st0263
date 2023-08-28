@@ -1,6 +1,6 @@
 import grpc
-import Source.Service_pb2 as Service_pb2
-import Source.Service_pb2_grpc as Service_pb2_grpc
+import Service_pb2 as Service_pb2
+import Service_pb2_grpc as Service_pb2_grpc
 from dotenv import load_dotenv
 import os
 
