@@ -17,7 +17,7 @@ PORT_RABBITMQ = os.getenv('PORT_RABBITMQ')
 USER_RABBITMQ = os.getenv('USER_RABBITMQ')
 PASSWORD_RABBITMQ = os.getenv('PASSWORD_RABBITMQ')
 
-
+print("El servicio está corriendo en Servidor2")
 
 connection = pika.BlockingConnection(pika.ConnectionParameters(HOST_RABBITMQ, PORT_RABBITMQ, '/', pika.PlainCredentials(USER_RABBITMQ, PASSWORD_RABBITMQ)))
 channel = connection.channel()

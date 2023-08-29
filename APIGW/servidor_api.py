@@ -13,7 +13,8 @@ def buscar_producto():
         respuesta = recursos.buscar_producto(nombre_archivo)
         return jsonify(respuesta)
     except:
-        respuesta=RunAMQP(nombre_archivo, function="SearchProduct")
+        print("busqueda")
+        respuesta=RunAMQP(nombre_archivo, function="busqueda_q")
         return jsonify(respuesta)
 
 @app.route('/listar_productos', methods=['GET'])
@@ -22,7 +23,8 @@ def listar_productos():
         archivos = recursos.listar_productos()
         return jsonify({"archivos": archivos})
     except:
-        respuesta=RunAMQP("", function="ListProducts")
+        print("lista")
+        respuesta=RunAMQP("", function="lista_q")
         return jsonify(respuesta)
 
 if __name__ == "__main__":
