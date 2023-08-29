@@ -28,7 +28,6 @@ def SearchProduct(ch, method, properties, body):
       
     archivo_respuesta = []
     for archivo in os.listdir(RUTA_ARCHIVOS):
-         archivo_respuesta = []
          if requestbusqueda in archivo:
             ruta_archivo = os.path.join(RUTA_ARCHIVOS, archivo)
             fecha_modificacion = datetime.datetime.fromtimestamp(os.path.getmtime(ruta_archivo)).strftime('%Y-%m-%d %H:%M:%S')
