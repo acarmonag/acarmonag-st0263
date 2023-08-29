@@ -62,6 +62,6 @@ def publish_response(ch, method, properties, response):
     ch.basic_ack(delivery_tag=method.delivery_tag)
     print("Respuesta de rabbitmq enviada")
     
-channel.basic_consume(queue="list_queue", on_message_callback=ListProducts, auto_ack=False)
-channel.basic_consume(queue="find_queue", on_message_callback=SearchProduct, auto_ack=False)
+channel.basic_consume(queue="q1", on_message_callback=ListProducts, auto_ack=False)
+channel.basic_consume(queue="q2", on_message_callback=SearchProduct, auto_ack=False)
 channel.start_consuming()
