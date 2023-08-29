@@ -21,11 +21,13 @@ def buscar_producto():
 def listar_productos():
     try:
         archivos = recursos.listar_productos()
-        return jsonify({"archivos": archivos})
+        ##return jsonify({"archivos": archivos})
+
     except:
         print("lista")
         respuesta=RunAMQP("", function="lista_q")
         return jsonify(respuesta)
+    return None
 
 if __name__ == "__main__":
     app.run(debug=True, host= HOST_APIGW, port = PORT_APIGW)
