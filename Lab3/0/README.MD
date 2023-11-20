@@ -126,9 +126,12 @@ Para conectar al nodo maestro del clúster:
             ```bash
             sudo nano /etc/hue/conf/hue.ini
             ```
+
         3.2. Busque la linea que contenga ‘webhdfs_url’ y cambiar el puerto de 14000 a 9870:
             ![Untitled](https://github.com/acarmonag/acarmonag-st0263/blob/master/Lab3/0/IMGS/33.png)
+
         3.3. Presione las teclas control + X y Y + enter, para guardar los cambios.
+        
         3.4. Reinicie el servicio Hue mediante el siguiente comando:
             
             ```bash
@@ -156,5 +159,5 @@ Finalmente, para trabajar con JupyterHub:
     ![Untitled](https://github.com/acarmonag/acarmonag-st0263/blob/master/Lab3/0/IMGS/35.png)
 3. Verifique que las variables de contexto de Spark estén configuradas.
     ![Untitled](https://github.com/acarmonag/acarmonag-st0263/blob/master/Lab3/0/IMGS/36.png)
-    
+
 Con estos pasos, tendrá un clúster EMR listo para utilizar en los laboratorios del curso.
