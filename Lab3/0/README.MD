@@ -32,6 +32,7 @@ Esta guía detalla el proceso para establecer un Clúster AWS EMR, indispensable
 Primero, es necesario crear un par de claves en AWS para garantizar el acceso seguro al clúster. Para esto, siga estos pasos:
 
 1. Acceda a AWS y busque el servicio EC2.
+    ![Untitled](https://github.com/acarmonag/acarmonag-st0263/blob/master/Lab3/0/IMGS/1.png)
 2. En el panel de EC2, haga clic en ‘Pares de claves’.
 3. Elija la opción ‘Crear pares de claves’.
 4. Asigne un nombre al par de claves y cree el par.
