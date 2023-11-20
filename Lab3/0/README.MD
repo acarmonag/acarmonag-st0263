@@ -121,22 +121,22 @@ Para conectar al nodo maestro del clúster:
 2. Siga las instrucciones proporcionadas para establecer la conexión SSH.
 3. Una vez conectado, edite el archivo ‘hue.ini’ para ajustar el puerto de webhdfs y reinicie el servicio Hue.
     ![Untitled](https://github.com/acarmonag/acarmonag-st0263/blob/master/Lab3/0/IMGS/32.png)
-        3.1. Escriba el siguiente comando en la terminal:
+3.1. Escriba el siguiente comando en la terminal:
         
-            ```bash
-            sudo nano /etc/hue/conf/hue.ini
-            ```
+    ```bash
+        sudo nano /etc/hue/conf/hue.ini
+    ```
 
-        3.2. Busque la linea que contenga ‘webhdfs_url’ y cambiar el puerto de 14000 a 9870:
-            ![Untitled](https://github.com/acarmonag/acarmonag-st0263/blob/master/Lab3/0/IMGS/33.png)
+3.2. Busque la linea que contenga ‘webhdfs_url’ y cambiar el puerto de 14000 a 9870:
+![Untitled](https://github.com/acarmonag/acarmonag-st0263/blob/master/Lab3/0/IMGS/33.png)
 
-        3.3. Presione las teclas control + X y Y + enter, para guardar los cambios.
-        
-        3.4. Reinicie el servicio Hue mediante el siguiente comando:
+3.3. Presione las teclas control + X y Y + enter, para guardar los cambios.
+
+3.4. Reinicie el servicio Hue mediante el siguiente comando:
             
-            ```bash
-            sudo systemctl restart hue.service
-            ```
+    ```bash
+        sudo systemctl restart hue.service
+    ```
 
 ## Parte 6: Uso de Hue
 
