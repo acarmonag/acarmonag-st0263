@@ -4,8 +4,8 @@
 | --- | --- |
 | Materia | Tópicos especiales en Telemática |
 | Curso | ST0263 |
-| Estudiante | Antonio Carmona Gaviria (mailto:acarmonag@eafit.edu.co) |
-| Profesor | Edwin Nelson Montoya Munera (mailto:emontoya@eafit.edu.co) |
+| Estudiante | Antonio Carmona Gaviria (acarmonag@eafit.edu.co) |
+| Profesor | Edwin Nelson Montoya Munera (emontoya@eafit.edu.co) |
 
 # 1. Objetivo
 
