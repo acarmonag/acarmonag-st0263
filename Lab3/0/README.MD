@@ -84,6 +84,7 @@ Ahora, proceda a crear el Clúster AWS EMR:
       }
     ]
     ```
+    
     ![Untitled](https://github.com/acarmonag/acarmonag-st0263/blob/master/Lab3/0/IMGS/16.png)
 8. En ‘Configuración de seguridad y par de claves de EC2’, seleccione el par de claves creado en la Parte 1.
     ![Untitled](https://github.com/acarmonag/acarmonag-st0263/blob/master/Lab3/0/IMGS/17.png)
