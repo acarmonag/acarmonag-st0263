@@ -4,7 +4,7 @@
 | --- | --- |
 | Materia | Tópicos especiales en Telemática |
 | Curso | ST0263 |
-| Estudiante | Antonio Carmona Gaviria (mailto:spuertaf@eafit.edu.co) |
+| Estudiante | Antonio Carmona Gaviria (mailto:acarmonag@eafit.edu.co) |
 | Profesor | Edwin Nelson Montoya Munera (mailto:emontoya@eafit.edu.co) |
 
 # 1. Objetivo
@@ -124,7 +124,7 @@ Para conectar al nodo maestro del clúster:
 3.1. Escriba el siguiente comando en la terminal:
         
     ```bash
-        sudo nano /etc/hue/conf/hue.ini
+    sudo nano /etc/hue/conf/hue.ini
     ```
 
 3.2. Busque la linea que contenga ‘webhdfs_url’ y cambiar el puerto de 14000 a 9870:
@@ -135,7 +135,7 @@ Para conectar al nodo maestro del clúster:
 3.4. Reinicie el servicio Hue mediante el siguiente comando:
             
     ```bash
-        sudo systemctl restart hue.service
+    sudo systemctl restart hue.service
     ```
 
 ## Parte 6: Uso de Hue
