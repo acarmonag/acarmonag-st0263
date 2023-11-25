@@ -10,7 +10,7 @@
 
 ## 1. Objetivo
 
-El objetivo de este laboratorio es copiar todos los archivos disponibles en el repositorio [😾 Datasets](https://github.com/st0263eafit/st0263-232/tree/main/bigdata/datasets) a dos sistemas de almacenamiento distintos: HDFS, que se utiliza para almacenamiento temporal, y S3, empleado para almacenamiento permanente.
+El objetivo de este laboratorio es copiar todos los archivos disponibles en el repositorio [ Datasets](https://github.com/st0263eafit/st0263-232/tree/main/bigdata/datasets) a dos sistemas de almacenamiento distintos: HDFS, que se utiliza para almacenamiento temporal, y S3, empleado para almacenamiento permanente.
 
 ## 2. Aspectos Solucionados y No Solucionados
 
@@ -44,7 +44,7 @@ Se lograron los siguientes objetivos:
 
    ![Untitled](https://github.com/acarmonag/acarmonag-st0263/blob/master/Lab3/1/IMGS/6.png)
 
-5. **Carga de Archivos:** Ir al enlace [✈️ airlines](https://github.com/st0263eafit/st0263-232/blob/main/bigdata/datasets/airlines.csv), descargar el archivo y cargarlo en el bucket.
+5. **Carga de Archivos:** Ir al enlace [ airlines](https://github.com/st0263eafit/st0263-232/blob/main/bigdata/datasets/airlines.csv), descargar el archivo y cargarlo en el bucket.
 
 
 6. **Verificación de Acceso Público:** Copiar la URL del objeto en S3, eliminando la parte '/airlines.csv' del final, y verificar el acceso público en el navegador.
