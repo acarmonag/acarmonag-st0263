@@ -25,7 +25,7 @@ El propósito principal es establecer un Data Warehouse utilizando BigQuery.
 
 #### Parte 1: Preparativos Iniciales
 
-1. Descarga del archivo '[data.zip](https://github.com/spuertaf/spuertaf-st0263/blob/main/Lab3-2y3-3/data.zip)' y extracción de su contenido.
+1. Descarga del archivo '[data.zip](https://github.com/acarmonag/acarmonag-st0263/blob/master/Lab3/2-3/data.zip)' y extracción de su contenido.
    
    
 
